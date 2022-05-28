@@ -5,6 +5,7 @@ import uuid
 
 from __seedwork.domain.exceptions import InvalidUuidException
 
+
 @dataclass(frozen=True)
 class ValueObject(ABC):
 
@@ -12,10 +13,10 @@ class ValueObject(ABC):
         fields_name = [field.name for field in fields(self)]
         return str(getattr(self, fields_name[0])) \
             if len(fields_name) == 1 \
-                else json.dumps({field_name: getattr(self, field_name) for field_name in fields_name})
+            else json.dumps({field_name: getattr(self, field_name) for field_name in fields_name})
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, slots=True)
 class UniqueEntityId(ValueObject):
 
     id: str = field(
@@ -35,4 +36,3 @@ class UniqueEntityId(ValueObject):
 
     def __str__(self):
         return f"{self.id}"
-

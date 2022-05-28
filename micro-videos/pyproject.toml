@@ -5,7 +5,9 @@ description = ""
 authors = [
     {name = "Julio Felipe", email = "julio@informach.com.br"},
 ]
-dependencies = []
+dependencies = [
+    "djangorestframework>=3.13.1"
+]
 requires-python = ">=3.10.2"
 license = {text = "MIT"}
 
